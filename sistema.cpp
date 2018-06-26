@@ -23,7 +23,7 @@ main()
 
 	objNota.definirPonteiros(&objAluno, &objDisciplina);
 	
-	
+	//teste
 	while (true)
 	{
 		textbackground(BLACK);
