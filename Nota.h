@@ -2,7 +2,7 @@ struct regNota
 {
 	string codAluno;
 	string codDisciplina;
-	int sequencia;
+	string sequencia;
 	string nota;
 };
 
@@ -58,7 +58,7 @@ public:
 		if ( not achou )
 		{	
 			
-			if (registro.sequencia<3) 
+			if (stoi(registro.sequencia)<=3) 
 			{
 				resp = t.perguntar("Registro nao encontrado. Deseja cadastrar nota (S/N) : ",24);
 				if (resp == "S")
@@ -74,7 +74,7 @@ public:
 			
 			else
 			{
-				resp = t.perguntar("Não é possivel registrar mais de 3 notas por aluno!!",24);
+				resp = t.perguntar("N�o � possivel registrar mais de 3 notas por aluno!!",24);
 			}
 			
 			
@@ -86,7 +86,7 @@ public:
 			resp = t.perguntar("Deseja Alterar/Excluir/Voltar (A/E/V) : ",24);
 			
 			if (resp=="A")
-			{
+			{	
 				this->entrarDados();
 				resp = t.perguntar("Confirma alteracao (S/N) : ",24);
 				if (resp=="S")
@@ -175,7 +175,7 @@ private:
 		gotoxy(33,11); cout << pontDisciplinas->obterNome(registro.codDisciplina);
 
 		t.centralizar("Informe a sequencia da nota",24);
-		gotoxy(29,12); cin >> registro.sequencia;
+		gotoxy(29,12); getline(cin, registro.sequencia);
 	}
 	
 	
@@ -224,9 +224,8 @@ private:
 		{
 			getline(arquivo, registro.codAluno, '|');
 			getline(arquivo, registro.codDisciplina, '|');
-			getline(arquivo, stoi(registro.sequencia), '|');
+			getline(arquivo, registro.sequencia, '|');
 			getline(arquivo, registro.nota);
-			//registro.sequencia=stoi(n);
 			if (registro.codAluno != "")
 			{
 				tabelaNotas.push_back(registro);
