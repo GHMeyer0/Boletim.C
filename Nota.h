@@ -2,7 +2,7 @@ struct regNota
 {
 	string codAluno;
 	string codDisciplina;
-	string sequencia;
+	int sequencia;
 	string nota;
 };
 
@@ -56,17 +56,29 @@ public:
 		achou = this->procurarCodigos();
 		
 		if ( not achou )
-		{
-			resp = t.perguntar("Registro nao encontrado. Deseja cadastrar nota (S/N) : ",24);
-			if (resp == "S")
+		{	
+			
+			if (registro.sequencia<3) 
 			{
-				this->entrarDados();
-				resp = t.perguntar("Confirma cadastro (S/N) : ",24);
+				resp = t.perguntar("Registro nao encontrado. Deseja cadastrar nota (S/N) : ",24);
 				if (resp == "S")
 				{
-					this->tabelaNotas.push_back(this->registro);
+					this->entrarDados();
+					resp = t.perguntar("Confirma cadastro (S/N) : ",24);
+					if (resp == "S")
+					{
+						this->tabelaNotas.push_back(this->registro);
+					}
 				}
 			}
+			
+			else
+			{
+				resp = t.perguntar("Não é possivel registrar mais de 3 notas por aluno!!",24);
+			}
+			
+			
+			
 		}
 		else // if (achou)
 		{
@@ -103,6 +115,7 @@ private:
 	int posicao;
 	Aluno *pontAlunos; 
 	Disciplina *pontDisciplinas;
+	string n;
 
 
 	void montarTela(int qual=1)
@@ -162,7 +175,7 @@ private:
 		gotoxy(33,11); cout << pontDisciplinas->obterNome(registro.codDisciplina);
 
 		t.centralizar("Informe a sequencia da nota",24);
-		gotoxy(29,12); getline(cin, registro.sequencia);
+		gotoxy(29,12); cin >> registro.sequencia;
 	}
 	
 	
@@ -211,9 +224,9 @@ private:
 		{
 			getline(arquivo, registro.codAluno, '|');
 			getline(arquivo, registro.codDisciplina, '|');
-			getline(arquivo, registro.sequencia, '|');
+			getline(arquivo, stoi(registro.sequencia), '|');
 			getline(arquivo, registro.nota);
-			
+			//registro.sequencia=stoi(n);
 			if (registro.codAluno != "")
 			{
 				tabelaNotas.push_back(registro);

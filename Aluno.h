@@ -1,10 +1,11 @@
 // estrutura do registro de Aluno
 struct regAluno
 {
-	string matricula;
-	string nome;
-	string email;
-	string telefone;
+	string 	matricula;
+	string 	nome;
+	string 	email;
+	string 	telefone;
+	int		nr_nt;
 };
 
 // classe Aluno
