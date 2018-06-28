@@ -21,7 +21,7 @@ main()
 	Nota objNota;
 
 	objNota.definirPonteiros(&objAluno, &objDisciplina);
-	objAluno.definirPonteiros(&objNota);
+	objAluno.definirPonteiro(&objNota);
 	
 	//teste
 	while (true)

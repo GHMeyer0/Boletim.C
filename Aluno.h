@@ -12,6 +12,10 @@ struct regAluno
 class Aluno
 {
 public:
+	void definirPonteiro(Nota *pn)
+	{
+		pontNotas = pn;
+	}
     // retorna o nome de um aluno
 	string obterNome(string cod)
 	{
@@ -94,6 +98,7 @@ private:
 	regAluno registro;
 	vector<regAluno> tabelaAlunos;
 	int posicao;
+	Nota *pontNotas;
 
 
 	// monta a tela de cadastro do aluno

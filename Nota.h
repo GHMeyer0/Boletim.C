@@ -11,6 +11,10 @@ class Nota
 {
 public:
 	
+	Nota(){
+		
+	}
+
 	void definirPonteiros(Aluno *pa, Disciplina *pd)
 	{
 		pontAlunos = pa;
