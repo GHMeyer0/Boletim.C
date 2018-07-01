@@ -1,0 +1,14 @@
+9	0	C:\Users\ghmey\Desktop\Final\main.cpp	In file included from C:\Users\ghmey\Desktop\Final\main.cpp
+15	24	C:\Users\ghmey\Desktop\Final\Aluno.h	[Error] 'Nota' has not been declared
+101	2	C:\Users\ghmey\Desktop\Final\Aluno.h	[Error] 'Nota' does not name a type
+C:\Users\ghmey\Desktop\Final\Aluno.h	In member function 'void Aluno::definirPonteiros(int*)':
+17	3	C:\Users\ghmey\Desktop\Final\Aluno.h	[Error] 'pontNotas' was not declared in this scope
+11	0	C:\Users\ghmey\Desktop\Final\main.cpp	In file included from C:\Users\ghmey\Desktop\Final\main.cpp
+C:\Users\ghmey\Desktop\Final\Nota.h	In member function 'void Nota::executarCRUD()':
+65	31	C:\Users\ghmey\Desktop\Final\Nota.h	[Error] 'stoi' was not declared in this scope
+C:\Users\ghmey\Desktop\Final\main.cpp	In function 'int main()':
+24	36	C:\Users\ghmey\Desktop\Final\main.cpp	[Error] no matching function for call to 'Aluno::definirPonteiros(Nota*)'
+24	36	C:\Users\ghmey\Desktop\Final\main.cpp	[Note] candidate is:
+9	0	C:\Users\ghmey\Desktop\Final\main.cpp	In file included from C:\Users\ghmey\Desktop\Final\main.cpp
+15	7	C:\Users\ghmey\Desktop\Final\Aluno.h	[Note] void Aluno::definirPonteiros(int*)
+15	7	C:\Users\ghmey\Desktop\Final\Aluno.h	[Note] no known conversion for argument 1 from 'Nota*' to 'int*'

@@ -242,7 +242,7 @@ private:
 	void gravarArquivo()
 	{
 		ofstream arquivo;
-		arquivo.open("notas.dat");
+		arquivo.open("notas.txt");
 		for (int i=0; i<tabelaNotas.size(); i++)
 		{
 			arquivo << tabelaNotas[i].codAluno << "|";

@@ -163,7 +163,7 @@ private:
 	void lerArquivo()
 	{
 		ifstream arquivo;
-		arquivo.open("disciplinas.dat");
+		arquivo.open("disciplinas.txt");
 		tabelaDisciplinas.clear();
 		while ( not arquivo.eof() )   // end of file
 		{

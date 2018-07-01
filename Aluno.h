@@ -12,7 +12,7 @@ struct regAluno
 class Aluno
 {
 public:
-	void definirPonteiro(Nota *pn)
+	void definirPonteiros(Nota *pn)
 	{
 		pontNotas = pn;
 	}
@@ -175,7 +175,7 @@ private:
 	void lerArquivo()
 	{
 		ifstream arquivo;
-		arquivo.open("alunos.dat");
+		arquivo.open("alunos.txt");
 		tabelaAlunos.clear();
 		while ( not arquivo.eof() )   // end of file
 		{
