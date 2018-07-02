@@ -32,6 +32,7 @@ public:
 		cfg = this->entrarTipo();
 		
 		this->montarTela(3);
+		cfg 
 
 		
 	}
