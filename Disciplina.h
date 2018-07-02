@@ -11,6 +11,10 @@ class Disciplina
 {
 public:
 	// retorna o nome da disciplina
+	void definirPonteiros(Nota *pn)
+	{
+		pontNotas = pn;
+	}
 	string obterNome(string cod)
 	{
 		string n;
@@ -76,11 +80,18 @@ public:
 			}
 			
 			if (resp=="E")
-			{
-				resp = t.perguntar("Confirma exclusao (S/N) : ",24);
-				if (resp=="S")
+			{				
+				if (this->tabelaDisciplinas[this->posicao] == pontNotas->tabelaNotas[pontNotas->procurarCodigoMateria(registro.codigo)].codDisciplina)
 				{
-					this->tabelaDisciplinas.erase( this->tabelaDisciplinas.begin() + this->posicao );
+					resp = t.perguntar("Existe notas lançadas para esta materia",24);
+				}
+				else
+				{
+					resp = t.perguntar("Confirma exclusao (S/N) : ",24);
+					if (resp=="S")
+					{
+						this->tabelaDisciplinas.erase( this->tabelaDisciplinas.begin() + this->posicao );
+					}
 				}
 			}
 		}
@@ -93,6 +104,7 @@ private:
 	regDisciplina registro;
 	vector<regDisciplina> tabelaDisciplinas;
 	int posicao;
+	Nota *pontNotas;
 
 
 	void montarTela()

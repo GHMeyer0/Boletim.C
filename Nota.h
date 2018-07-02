@@ -10,7 +10,9 @@ struct regNota
 class Nota
 {
 public:
-	
+	regNota registro;
+	vector<regNota> tabelaNotas;
+	int posicao;
 	Nota(){
 		
 	}
@@ -29,18 +31,8 @@ public:
 		this->montarTela(2);
 		cfg = this->entrarTipo();
 		
-		if (cfg[0]=="A")
-		{
-			// mostra o boletim do aluno
-			this->montarTela(3);
-			//this->mostrarBoletimAluno(cfg[1]);
-		}
-		else
-		{
-			// mostra o boletim da disciplina
-			this->montarTela(4);
-			//this->mostrarBoletimDisciplina(cfg[1]);
-		}
+		this->montarTela(3);
+
 		
 	}
 	
@@ -112,15 +104,59 @@ public:
 		this->gravarArquivo();
 	}
 
-  
+	int procurarMatricula(string matricula){
+		int i;
+		
+		for(i = 0; i < tabelaNotas.size(); i++)
+		{	
+			if (matricula == tabelaNotas[i].codAluno ) 
+			{
+				return i;
+			}
+			else
+			{
+				return tabelaNotas.size()+1;
+			}
+		}
+	}
+	int procurarCodigoMateria(string CodMat){
+		int i;
+		for(i = 0; i < tabelaNotas.size(); i++)
+		{	
+			if (CodMat == tabelaNotas[i].codAluno ) 
+			{
+				return i;
+			}
+			else
+			{
+				return tabelaNotas.size()+1;
+			}
+			
+		}
+	}	
 private:	
-	regNota registro;
-	vector<regNota> tabelaNotas;
-	int posicao;
+	
 	Aluno *pontAlunos; 
 	Disciplina *pontDisciplinas;
 	string n;
 
+	bool procurarCodigos()
+	{
+		int x;
+		bool achei = false;
+		for (x=0; x<tabelaNotas.size(); x++)
+		{
+			if (registro.codAluno == tabelaNotas[x].codAluno &&
+			    registro.codDisciplina == tabelaNotas[x].codDisciplina &&
+			    registro.sequencia == tabelaNotas[x].sequencia)
+			{
+				achei = true;
+				this->posicao = x;
+				break;
+			}
+		}
+		return achei;
+	}
 
 	void montarTela(int qual=1)
 	{
@@ -142,8 +178,15 @@ private:
 			textcolor(YELLOW);
 			gotoxy(16,8); cout << "Emissao de Boletim";
 			textcolor(WHITE);
-			gotoxy(16,10); cout << "Aluno/Disciplina (A/D) :";
-			//gotoxy(16,11); cout << "Codigo da Disciplina   :";
+		}
+		else if (qual == 3){
+			gotoxy(10,12); cout << "+---------------------------------------------------------------------------------+";
+			gotoxy(10,13); cout << "|                                Boletim                                          |";
+			gotoxy(10,14); cout << "|---------------------------------------------------------------------------------|";
+			gotoxy(10,15); cout << "|  Disciplina          |  Nota 1  |  Nota 2  |  Nota 3  |  Media  | Situação      |";
+			gotoxy(10,16); cout << "|---------------------------------------------------------------------------------|";
+			gotoxy(10,17); cout << "|                      |          |          |          |         |               |";
+			gotoxy(10,18); cout << "|---------------------------------------------------------------------------------|";
 		}
 	}
 	
@@ -151,18 +194,8 @@ private:
 	vector<string> entrarTipo()
 	{
 		vector<string> config(2);
-		gotoxy(41, 10); getline(cin, config[0]);
-		config[0] = toupper(config[0][0]);
-		if (config[0]=="A")
-		{
-			gotoxy(16,11); cout << "Codigo do Aluno        :";
-		}
-		else
-		{
-			gotoxy(16,11); cout << "Codigo da Disciplina   :";
-		}
+		gotoxy(16,11); cout << "Codigo do Aluno        :";
 		gotoxy(41,11); getline(cin, config[1]);
-		
 		return config;
 	}
 	
@@ -181,26 +214,6 @@ private:
 		t.centralizar("Informe a sequencia da nota",24);
 		gotoxy(29,12); getline(cin, registro.sequencia);
 	}
-	
-	
-	bool procurarCodigos()
-	{
-		int x;
-		bool achei = false;
-		for (x=0; x<tabelaNotas.size(); x++)
-		{
-			if (registro.codAluno == tabelaNotas[x].codAluno &&
-			    registro.codDisciplina == tabelaNotas[x].codDisciplina &&
-			    registro.sequencia == tabelaNotas[x].sequencia)
-			{
-				achei = true;
-				this->posicao = x;
-				break;
-			}
-		}
-		return achei;
-	}
-	
 	
 	void entrarDados()
 	{

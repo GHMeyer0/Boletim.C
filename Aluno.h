@@ -81,12 +81,19 @@ public:
 			}
 			
 			if (resp=="E")
-			{
-				resp = t.perguntar("Confirma exclusao (S/N) : ",24);
-				if (resp=="S")
-				{
-					this->tabelaAlunos.erase( this->tabelaAlunos.begin() + this->posicao );
+			{	
+				if (this->tabelaAlunos[this->posicao] == pontNotas->tabelaNotas[pontNotas->procurarMatricula(registro.matricula)].codAluno){
+					resp = t.perguntar("Não é possivel apagar este aluno, pois exitem notas registradas para ele...",24);
 				}
+				else
+				{
+					resp = t.perguntar("Confirma exclusao (S/N) : ",24);
+					if (resp=="S")
+					{
+						this->tabelaAlunos.erase( this->tabelaAlunos.begin() + this->posicao );
+					}
+				}
+
 			}
 		}
 		
