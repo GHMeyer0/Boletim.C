@@ -5,6 +5,9 @@
 #include <fstream>
 using namespace std;
 
+class Aluno;
+class Disciplina;
+
 #include "Tela.h"
 #include "Aluno.h"
 #include "Disciplina.h"

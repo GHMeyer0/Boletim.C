@@ -25,16 +25,7 @@ public:
 	
 	
 	void emitirBoletim()
-	{
-		vector<string> cfg;
-		
-		this->montarTela(2);
-		cfg = this->entrarTipo();
-		
-		this->montarTela(3);
-		cfg 
-
-		
+	{		
 	}
 	
 	

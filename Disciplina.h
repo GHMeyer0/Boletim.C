@@ -81,7 +81,7 @@ public:
 			
 			if (resp=="E")
 			{				
-				if (this->tabelaDisciplinas[this->posicao] == pontNotas->tabelaNotas[pontNotas->procurarCodigoMateria(registro.codigo)].codDisciplina)
+				if (this->tabelaDisciplinas[this->posicao].codigo == pontNotas->tabelaNotas[pontNotas->procurarCodigoMateria(registro.codigo)].codDisciplina)
 				{
 					resp = t.perguntar("Existe notas lançadas para esta materia",24);
 				}
