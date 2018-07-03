@@ -13,7 +13,7 @@ class Aluno
 {
 public:
 	Aluno();
-	//~Aluno();
+	~Aluno();
 	void definirPonteiros(Nota *pn);
     // retorna o nome de um aluno
 	string obterNome(string cod);

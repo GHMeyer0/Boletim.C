@@ -107,7 +107,7 @@ public:
 			}
 			else
 			{
-				return tabelaNotas.size()+1;
+				return 0;
 			}
 		}
 	}
@@ -121,7 +121,7 @@ public:
 			}
 			else
 			{
-				return tabelaNotas.size()+1;
+				return 0;
 			}
 			
 		}

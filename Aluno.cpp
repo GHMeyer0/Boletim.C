@@ -1,9 +1,9 @@
     Aluno::Aluno(){
         this->lerArquivo();
     }
-    // Aluno::~Aluno(){
-    //     this->gravarArquivo();
-    // }
+    Aluno::~Aluno(){
+         this->gravarArquivo();
+    }
     
     void Aluno::definirPonteiros(Nota *pn)
 	{
@@ -183,7 +183,7 @@
 	void Aluno::gravarArquivo()
 	{
 		ofstream arquivo;
-		arquivo.open("alunos.dat");
+		arquivo.open("alunos.txt");
 		for (int i=0; i<tabelaAlunos.size(); i++)
 		{
 			arquivo << tabelaAlunos[i].matricula << "|";
