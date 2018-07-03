@@ -14,11 +14,10 @@ class Aluno
 public:
 	Aluno();
 	~Aluno();
-	void definirPonteiros(Nota *pn);
     // retorna o nome de um aluno
 	string obterNome(string cod);
 	// gerencia a logica do CRUD
-	void executarCRUD();  
+	void executarCRUD(Nota *pn);  
 private:	
 	regAluno registro;
 	vector<regAluno> tabelaAlunos;

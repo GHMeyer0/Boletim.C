@@ -5,10 +5,6 @@
          this->gravarArquivo();
     }
     
-    void Aluno::definirPonteiros(Nota *pn)
-	{
-		pontNotas = pn;
-	}
     // retorna o nome de um aluno
 	string Aluno::obterNome(string cod)
 	{
@@ -25,12 +21,12 @@
 		return n;
 	}
 	// gerencia a logica do CRUD
-	void Aluno::executarCRUD()
+	void Aluno::executarCRUD(Nota *pn)
 	{
 		Tela t;
 		bool achou;
 		string resp;
-		
+		this->pontNotas = pn;
 	
 		
 		this->montarTela();
@@ -67,14 +63,14 @@
 			
 			if (resp=="E")
 			{	
-				if (this->tabelaAlunos[this->posicao].matricula == pontNotas->tabelaNotas[pontNotas->procurarMatricula(registro.matricula)].codAluno)
+				if (pontNotas->procurarMatricula(this->registro.matricula))
                 {
 					resp = t.perguntar("Não é possivel apagar este aluno, pois exitem notas registradas para ele...",24);
 				}
 				else
-				{
+				{	
 					resp = t.perguntar("Confirma exclusao (S/N) : ",24);
-					if (resp=="S")
+					if(resp=="S")
 					{
 						this->tabelaAlunos.erase( this->tabelaAlunos.begin() + this->posicao );
 					}
@@ -82,8 +78,6 @@
 
 			}
 		}
-		
-		this->gravarArquivo();
 	}
 
 

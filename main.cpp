@@ -28,9 +28,9 @@ main()
 	Aluno objAluno;
 	Disciplina objDisciplina;
 	Nota objNota;
+	Tela t;
 
 	objNota.definirPonteiros(&objAluno, &objDisciplina);
-	objAluno.definirPonteiros(&objNota);
 	
 	//teste
 	while (true)
@@ -52,9 +52,9 @@ main()
 		
 		if (opcao == "0") break;
 		
-		if (opcao == "1") objAluno.executarCRUD();
+		if (opcao == "1") objAluno.executarCRUD(&objNota);
 		
-		if (opcao == "2") objDisciplina.executarCRUD();
+		if (opcao == "2") objDisciplina.executarCRUD(&objNota);
 
 		if (opcao == "3") objNota.executarCRUD();
 		

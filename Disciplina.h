@@ -9,12 +9,10 @@ class Disciplina
 {
 public:
 	// retorna o nome da disciplina
-	void definirPonteiros(Nota *pn);
 	string obterNome(string cod);
 	Disciplina();
-	//~Disciplina();
-	void executarCRUD();
-  
+	~Disciplina();
+	void executarCRUD(Nota *pn);
 private:	
 	regDisciplina registro;
 	vector<regDisciplina> tabelaDisciplinas;

@@ -1,4 +1,11 @@
 	
+	Disciplina::Disciplina()
+	{
+		this->lerArquivo();
+	}
+	Disciplina::~Disciplina(){
+		this->gravarArquivo();
+	}
 	string Disciplina::obterNome(string cod)
 	{
 		string n;
@@ -13,26 +20,14 @@
 		}
 		return n;
 	}
-    void Disciplina::definirPonteiros(Nota *pn)
-	{
-		pontNotas = pn;
-	}
 	
-	
-	Disciplina::Disciplina()
-	{
-		this->lerArquivo();
-	}
-	
-	
-
 	// gerencia a logica do CRUD
-	void Disciplina::executarCRUD()
+	void Disciplina::executarCRUD(Nota *pn)
 	{
 		Tela t;
 		bool achou;
 		string resp;
-		
+		this->pontNotas = pn;
 		
 		
 		this->montarTela();
@@ -56,7 +51,7 @@
 		{
 			this->mostrarDados();
 			resp = t.perguntar("Deseja Alterar/Excluir/Voltar (A/E/V) : ",24);
-			
+						
 			if (resp=="A")
 			{
 				this->entrarDados();
@@ -68,23 +63,24 @@
 			}
 			
 			if (resp=="E")
-			{				
-				if (this->tabelaDisciplinas[this->posicao].codigo == pontNotas->tabelaNotas[pontNotas->procurarCodigoMateria(registro.codigo)].codDisciplina)
+			{
+				gotoxy(24,24); cout << "====================";
+			getch();				
+				if (pontNotas->procurarCodMat(this->registro.codigo))
 				{
 					t.perguntar("Existe notas lançadas para esta materia",24);
 				}
 				else
-				{
+				{	
+					
 					resp = t.perguntar("Confirma exclusao (S/N) : ",24);
 					if(resp=="S")
-					{
-						this->tabelaDisciplinas.erase( this->tabelaDisciplinas.begin() + this->posicao );
+					{	
+						this->tabelaDisciplinas.erase(this->tabelaDisciplinas.begin()+this->posicao);
 					}
 				}
 			}
 		}
-		
-		this->gravarArquivo();
 	}
 
 
@@ -115,7 +111,7 @@
 	{
 		int x;
 		bool achei = false;
-		for (x=0; x<tabelaDisciplinas.size(); x++)
+		for (x=0; x<=tabelaDisciplinas.size(); x++)
 		{
 			if (registro.codigo == tabelaDisciplinas[x].codigo)
 			{
@@ -177,7 +173,7 @@
 	void Disciplina::gravarArquivo()
 	{
 		ofstream arquivo;
-		arquivo.open("disciplinas.dat");
+		arquivo.open("disciplinas.txt");
 		for (int i=0; i<tabelaDisciplinas.size(); i++)
 		{
 			arquivo << tabelaDisciplinas[i].codigo << "|";

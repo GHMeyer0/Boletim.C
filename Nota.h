@@ -14,7 +14,7 @@ public:
 	vector<regNota> tabelaNotas;
 	int posicao;
 	Nota(){
-		
+		this->lerArquivo();
 	}
 
 	void definirPonteiros(Aluno *pa, Disciplina *pd)
@@ -37,7 +37,7 @@ public:
 		bool achou;
 		string resp;
 		
-		this->lerArquivo();
+		//this->lerArquivo();
 		
 		this->montarTela();
 		this->entrarCodigos();
@@ -96,34 +96,28 @@ public:
 		this->gravarArquivo();
 	}
 
-	int procurarMatricula(string matricula){
+	bool procurarMatricula(string matricula){
 		int i;
-		
-		for(i = 0; i < tabelaNotas.size(); i++)
+		bool achou = false;
+		for(i = 0; i <= tabelaNotas.size(); i++)
 		{	
 			if (matricula == tabelaNotas[i].codAluno ) 
 			{
-				return i;
-			}
-			else
-			{
-				return 0;
+				return true;
+				break;
 			}
 		}
 	}
-	int procurarCodigoMateria(string CodMat){
+	bool procurarCodMat(string CodMat){
 		int i;
-		for(i = 0; i < tabelaNotas.size(); i++)
+		bool achou = false;
+		for(i = 0; i <= tabelaNotas.size(); i++)
 		{	
-			if (CodMat == tabelaNotas[i].codAluno ) 
+			if (CodMat == tabelaNotas[i].codDisciplina ) 
 			{
-				return i;
+				return true;
+				break;
 			}
-			else
-			{
-				return 0;
-			}
-			
 		}
 	}	
 private:	
