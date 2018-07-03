@@ -1,23 +1,16 @@
-// estrutura do registro de Aluno
-struct regAluno
-{
-	string 	matricula;
-	string 	nome;
-	string 	email;
-	string 	telefone;
-	int		nr_nt;
-};
-
-// classe Aluno
-class Aluno
-{
-public:
-	void definirPonteiros(Nota *pn)
+    Aluno::Aluno(){
+        this->lerArquivo();
+    }
+    // Aluno::~Aluno(){
+    //     this->gravarArquivo();
+    // }
+    
+    void Aluno::definirPonteiros(Nota *pn)
 	{
 		pontNotas = pn;
 	}
     // retorna o nome de um aluno
-	string obterNome(string cod)
+	string Aluno::obterNome(string cod)
 	{
 		string n;
 		registro.matricula=cod;
@@ -31,16 +24,8 @@ public:
 		}
 		return n;
 	}
-
-	Aluno()
-	{
-			this->lerArquivo();
-	}
-
-
-
 	// gerencia a logica do CRUD
-	void executarCRUD()
+	void Aluno::executarCRUD()
 	{
 		Tela t;
 		bool achou;
@@ -82,7 +67,8 @@ public:
 			
 			if (resp=="E")
 			{	
-				if (this->tabelaAlunos[this->posicao].matricula == pontNotas->tabelaNotas[pontNotas->procurarMatricula(registro.matricula)].codAluno){
+				if (this->tabelaAlunos[this->posicao].matricula == pontNotas->tabelaNotas[pontNotas->procurarMatricula(registro.matricula)].codAluno)
+                {
 					resp = t.perguntar("Não é possivel apagar este aluno, pois exitem notas registradas para ele...",24);
 				}
 				else
@@ -100,16 +86,9 @@ public:
 		this->gravarArquivo();
 	}
 
-  
-private:	
-	regAluno registro;
-	vector<regAluno> tabelaAlunos;
-	int posicao;
-	Nota *pontNotas;
-
 
 	// monta a tela de cadastro do aluno
-	void montarTela()
+	void Aluno::montarTela()
 	{
 		Tela t;
 		t.montarMoldura(15,7,59,14,1);
@@ -124,7 +103,7 @@ private:
 	
 	
 	// faz a entrada da matricula do aluno
-	void entrarMatricula()
+	void Aluno::entrarMatricula()
 	{
 		Tela t;
 		t.centralizar("Informe a matricula",24);
@@ -134,7 +113,7 @@ private:
 	
 	
 	// procura por uma matricula na tabelaAlunos
-	bool procurarMatricula()
+	bool Aluno::procurarMatricula()
 	{
 		int x;
 		bool achei = false;
@@ -152,7 +131,7 @@ private:
 	
 	
 	// faz a entrada de dados do registro
-	void entrarDados()
+	void Aluno::entrarDados()
 	{
 		Tela t;
 		
@@ -170,7 +149,7 @@ private:
 	
 	
 	// mostra os dados da matricula encontrada
-	void mostrarDados()
+	void Aluno::mostrarDados()
 	{
 		gotoxy(28,11); cout << this->tabelaAlunos[this->posicao].nome;
 		gotoxy(28,12); cout << this->tabelaAlunos[this->posicao].email;
@@ -179,7 +158,7 @@ private:
 	
 	
 	// le os dados dos alunos de um arquivo texto
-	void lerArquivo()
+	void Aluno::lerArquivo()
 	{
 		ifstream arquivo;
 		arquivo.open("alunos.txt");
@@ -201,7 +180,7 @@ private:
 	
 	
 	// grava os dados do vetor tabelaAlunos no arquivo texto
-	void gravarArquivo()
+	void Aluno::gravarArquivo()
 	{
 		ofstream arquivo;
 		arquivo.open("alunos.dat");
@@ -214,4 +193,3 @@ private:
 		}
 		arquivo.close();
 	}
-};

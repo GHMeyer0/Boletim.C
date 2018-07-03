@@ -7,11 +7,17 @@ using namespace std;
 
 class Aluno;
 class Disciplina;
+class Nota;
 
 #include "Tela.h"
 #include "Aluno.h"
 #include "Disciplina.h"
 #include "Nota.h"
+
+#include "Disciplina.cpp"
+#include "Aluno.cpp"
+
+
 
 main()
 {

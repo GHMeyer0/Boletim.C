@@ -62,7 +62,7 @@ public:
 			
 			else
 			{
-				resp = t.perguntar("N�o � possivel registrar mais de 3 notas por aluno!!",24);
+				t.perguntar("N�o � possivel registrar mais de 3 notas por aluno!!",24);
 			}
 			
 			
@@ -227,7 +227,7 @@ private:
 	void lerArquivo()
 	{
 		ifstream arquivo;
-		arquivo.open("notas.dat");
+		arquivo.open("notas.txt");
 		tabelaNotas.clear();
 		while ( not arquivo.eof() )   // end of file
 		{
